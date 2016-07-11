@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+extension UIView {
+    
+    public func width(modifier: MountainModifier) -> Self {
+        Width(modifier: modifier).generateConstraint(self)
+        return self
+    }
+    
+    public func height(modifier: MountainModifier) -> Self {
+        Height(modifier: modifier).generateConstraint(self)
+        return self
+    }
+    
+}

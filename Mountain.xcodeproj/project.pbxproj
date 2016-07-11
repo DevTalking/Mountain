@@ -8,12 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		7B002F051D332E4700692B30 /* Mountain.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B002F041D332E4700692B30 /* Mountain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7B002F0D1D332E6500692B30 /* MountainEquation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F0C1D332E6500692B30 /* MountainEquation.swift */; };
+		7B002F0F1D332EA000692B30 /* MountainPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F0E1D332EA000692B30 /* MountainPriority.swift */; };
+		7B002F111D33353600692B30 /* MountainRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F101D33353600692B30 /* MountainRelation.swift */; };
+		7B002F131D333D9600692B30 /* MountainModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F121D333D9600692B30 /* MountainModifier.swift */; };
+		7B002F151D33415B00692B30 /* MountainAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F141D33415B00692B30 /* MountainAttribute.swift */; };
+		7B002F171D3344A100692B30 /* DimensionMountainEquation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F161D3344A100692B30 /* DimensionMountainEquation.swift */; };
+		7B002F191D3370E100692B30 /* MountainExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F181D3370E100692B30 /* MountainExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7B002F011D332E4700692B30 /* Mountain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Mountain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B002F041D332E4700692B30 /* Mountain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mountain.h; sourceTree = "<group>"; };
 		7B002F061D332E4700692B30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B002F0C1D332E6500692B30 /* MountainEquation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainEquation.swift; sourceTree = "<group>"; };
+		7B002F0E1D332EA000692B30 /* MountainPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainPriority.swift; sourceTree = "<group>"; };
+		7B002F101D33353600692B30 /* MountainRelation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainRelation.swift; sourceTree = "<group>"; };
+		7B002F121D333D9600692B30 /* MountainModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainModifier.swift; sourceTree = "<group>"; };
+		7B002F141D33415B00692B30 /* MountainAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainAttribute.swift; sourceTree = "<group>"; };
+		7B002F161D3344A100692B30 /* DimensionMountainEquation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimensionMountainEquation.swift; sourceTree = "<group>"; };
+		7B002F181D3370E100692B30 /* MountainExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +62,13 @@
 			children = (
 				7B002F041D332E4700692B30 /* Mountain.h */,
 				7B002F061D332E4700692B30 /* Info.plist */,
+				7B002F0C1D332E6500692B30 /* MountainEquation.swift */,
+				7B002F161D3344A100692B30 /* DimensionMountainEquation.swift */,
+				7B002F0E1D332EA000692B30 /* MountainPriority.swift */,
+				7B002F101D33353600692B30 /* MountainRelation.swift */,
+				7B002F121D333D9600692B30 /* MountainModifier.swift */,
+				7B002F141D33415B00692B30 /* MountainAttribute.swift */,
+				7B002F181D3370E100692B30 /* MountainExtension.swift */,
 			);
 			path = Mountain;
 			sourceTree = "<group>";
@@ -95,6 +116,7 @@
 				TargetAttributes = {
 					7B002F001D332E4700692B30 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = X6UV5E28WN;
 					};
 				};
 			};
@@ -130,6 +152,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B002F171D3344A100692B30 /* DimensionMountainEquation.swift in Sources */,
+				7B002F151D33415B00692B30 /* MountainAttribute.swift in Sources */,
+				7B002F191D3370E100692B30 /* MountainExtension.swift in Sources */,
+				7B002F0D1D332E6500692B30 /* MountainEquation.swift in Sources */,
+				7B002F111D33353600692B30 /* MountainRelation.swift in Sources */,
+				7B002F0F1D332EA000692B30 /* MountainPriority.swift in Sources */,
+				7B002F131D333D9600692B30 /* MountainModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,7 +203,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -217,7 +246,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -230,28 +259,35 @@
 		7B002F0A1D332E4700692B30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Mountain/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devtalking.Mountain;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		7B002F0B1D332E4700692B30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Mountain/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.devtalking.Mountain;
 				PRODUCT_NAME = "$(TARGET_NAME)";

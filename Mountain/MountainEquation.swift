@@ -11,17 +11,17 @@ import UIKit
 /**
  This is the abstraction of **item1.attribute1 = multiplier × item2.attribute2 + constant** equation.
  */
-public class Equation {
+public class MountainEquation {
     
-    var priority: Priority
-    var relation: Relation
+    var priority: MountainPriority
+    var relation: MountainRelation
     var constant: CGFloat
     var multiplier: CGFloat
-    var attribute: Attribute?
+    var attribute: MountainAttribute?
     var toItem: AnyObject?
-    var toItemAttribute: Attribute?
+    var toItemAttribute: MountainAttribute?
     
-    init(modifier: Modifier) {
+    init(modifier: MountainModifier) {
         
         self.priority = .HighPriority
         self.relation = modifier.relation
@@ -46,7 +46,7 @@ public class Equation {
         
     }
     
-    private func attributeFromClass() -> Attribute {
+    private func attributeFromClass() -> MountainAttribute {
         
         switch self {
         case is Width:
@@ -57,15 +57,6 @@ public class Equation {
             return .NotAnAttribute
         }
         
-    }
-    
-}
-
-extension UIView {
-    
-    public func width(modifier: Modifier) -> Self {
-        Width(modifier: modifier).generateConstraint(self)
-        return self
     }
     
 }

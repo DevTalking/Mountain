@@ -8,15 +8,15 @@
 
 import Foundation
 
-public class DimensionEquation: Equation {
+public class DimensionMountainEquation: MountainEquation {
     
     
 }
 
-public class Width: DimensionEquation {
+public class Width: DimensionMountainEquation {
     
 }
 
-public class Height: DimensionEquation {
+public class Height: DimensionMountainEquation {
     
 }

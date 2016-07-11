@@ -8,10 +8,10 @@
 
 import Foundation
 
-public struct Modifier {
+public struct MountainModifier {
     
     public var value: CGFloat
-    public var relation: Relation
+    public var relation: MountainRelation
     public var multiplier: CGFloat
     
     init(value: CGFloat) {
@@ -20,7 +20,7 @@ public struct Modifier {
         self.multiplier = 1.0
     }
     
-    init(value: CGFloat, _ relation: Relation) {
+    init(value: CGFloat, _ relation: MountainRelation) {
         self.value = value
         self.relation = relation
         self.multiplier = 1.0

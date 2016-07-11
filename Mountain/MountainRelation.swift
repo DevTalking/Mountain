@@ -11,7 +11,7 @@ import Foundation
 /**
  Relation enum which offers 3 relationships between the first attribute and the modified second attribute in a constraint.
  */
-public enum Relation {
+public enum MountainRelation {
     
     case EqualTo
     case GreaterThanOrEqualTo
@@ -34,12 +34,12 @@ public enum Relation {
 
 prefix operator <= {}
 
-public prefix func <= (rightValue: CGFloat) -> Modifier {
-    return Modifier(value: rightValue, .LessThanOrEqualTo)
+public prefix func <= (rightValue: CGFloat) -> MountainModifier {
+    return MountainModifier(value: rightValue, .LessThanOrEqualTo)
 }
 
 prefix operator >= {}
 
-public prefix func >= (rightValue: CGFloat) -> Modifier {
-    return Modifier(value: rightValue, .GreaterThanOrEqualTo)
+public prefix func >= (rightValue: CGFloat) -> MountainModifier {
+    return MountainModifier(value: rightValue, .GreaterThanOrEqualTo)
 }

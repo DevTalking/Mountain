@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum Attribute {
+public enum MountainAttribute {
 
     // MARK: Dimension attributes
     case Width
