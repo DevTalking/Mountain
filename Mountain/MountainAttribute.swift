@@ -14,6 +14,15 @@ public enum MountainAttribute {
     case Width
     case Height
     
+    // MARK: Position attributes
+    case CenterX
+    case CenterY
+    case CenterXWithinMargins
+    case CenterYWithinMargins
+    
+    case Top
+    case TopMargin
+    
     // MARK: Default attribute
     case NotAnAttribute
     
@@ -24,6 +33,18 @@ public enum MountainAttribute {
             return .Width
         case .Height:
             return .Height
+        case .CenterX:
+            return .CenterX
+        case .CenterY:
+            return .CenterY
+        case .CenterXWithinMargins:
+            return .CenterXWithinMargins
+        case .CenterYWithinMargins:
+            return .CenterYWithinMargins
+        case .Top:
+            return .Top
+        case .TopMargin:
+            return .TopMargin
         case .NotAnAttribute:
             return .NotAnAttribute
         }

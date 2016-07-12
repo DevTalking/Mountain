@@ -90,7 +90,7 @@ s.ios.deployment_target = "8.3"
   #
 
   s.source_files  = "Mountain/**/*.{swift}"
-  s.exclude_files = "Classes/Exclude"
+  #s.exclude_files = "Mountain/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
 
@@ -104,7 +104,7 @@ s.ios.deployment_target = "8.3"
   #
 
   # s.resource  = "icon.png"
-s.resources = "Mountain/**/*.{png,jpeg,jpg,storyboard,xib}"
+#s.resources = "Mountain/**/*.{png,jpeg,jpg,storyboard,xib}"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
 

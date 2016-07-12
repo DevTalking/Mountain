@@ -13,8 +13,10 @@
 		7B002F111D33353600692B30 /* MountainRelation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F101D33353600692B30 /* MountainRelation.swift */; };
 		7B002F131D333D9600692B30 /* MountainModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F121D333D9600692B30 /* MountainModifier.swift */; };
 		7B002F151D33415B00692B30 /* MountainAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F141D33415B00692B30 /* MountainAttribute.swift */; };
-		7B002F171D3344A100692B30 /* DimensionMountainEquation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F161D3344A100692B30 /* DimensionMountainEquation.swift */; };
+		7B002F171D3344A100692B30 /* MountainDimensionEquation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F161D3344A100692B30 /* MountainDimensionEquation.swift */; };
 		7B002F191D3370E100692B30 /* MountainExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F181D3370E100692B30 /* MountainExtension.swift */; };
+		7B002F3B1D338C1A00692B30 /* MountainTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F3A1D338C1A00692B30 /* MountainTool.swift */; };
+		7B002F3D1D34939300692B30 /* MountainPositionEquation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B002F3C1D34939300692B30 /* MountainPositionEquation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +28,10 @@
 		7B002F101D33353600692B30 /* MountainRelation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainRelation.swift; sourceTree = "<group>"; };
 		7B002F121D333D9600692B30 /* MountainModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainModifier.swift; sourceTree = "<group>"; };
 		7B002F141D33415B00692B30 /* MountainAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainAttribute.swift; sourceTree = "<group>"; };
-		7B002F161D3344A100692B30 /* DimensionMountainEquation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimensionMountainEquation.swift; sourceTree = "<group>"; };
+		7B002F161D3344A100692B30 /* MountainDimensionEquation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainDimensionEquation.swift; sourceTree = "<group>"; };
 		7B002F181D3370E100692B30 /* MountainExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainExtension.swift; sourceTree = "<group>"; };
+		7B002F3A1D338C1A00692B30 /* MountainTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainTool.swift; sourceTree = "<group>"; };
+		7B002F3C1D34939300692B30 /* MountainPositionEquation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MountainPositionEquation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +67,14 @@
 				7B002F041D332E4700692B30 /* Mountain.h */,
 				7B002F061D332E4700692B30 /* Info.plist */,
 				7B002F0C1D332E6500692B30 /* MountainEquation.swift */,
-				7B002F161D3344A100692B30 /* DimensionMountainEquation.swift */,
+				7B002F161D3344A100692B30 /* MountainDimensionEquation.swift */,
+				7B002F3C1D34939300692B30 /* MountainPositionEquation.swift */,
 				7B002F0E1D332EA000692B30 /* MountainPriority.swift */,
 				7B002F101D33353600692B30 /* MountainRelation.swift */,
 				7B002F121D333D9600692B30 /* MountainModifier.swift */,
 				7B002F141D33415B00692B30 /* MountainAttribute.swift */,
 				7B002F181D3370E100692B30 /* MountainExtension.swift */,
+				7B002F3A1D338C1A00692B30 /* MountainTool.swift */,
 			);
 			path = Mountain;
 			sourceTree = "<group>";
@@ -152,12 +158,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B002F171D3344A100692B30 /* DimensionMountainEquation.swift in Sources */,
+				7B002F171D3344A100692B30 /* MountainDimensionEquation.swift in Sources */,
 				7B002F151D33415B00692B30 /* MountainAttribute.swift in Sources */,
 				7B002F191D3370E100692B30 /* MountainExtension.swift in Sources */,
 				7B002F0D1D332E6500692B30 /* MountainEquation.swift in Sources */,
 				7B002F111D33353600692B30 /* MountainRelation.swift in Sources */,
 				7B002F0F1D332EA000692B30 /* MountainPriority.swift in Sources */,
+				7B002F3B1D338C1A00692B30 /* MountainTool.swift in Sources */,
+				7B002F3D1D34939300692B30 /* MountainPositionEquation.swift in Sources */,
 				7B002F131D333D9600692B30 /* MountainModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

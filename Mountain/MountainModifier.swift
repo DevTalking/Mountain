@@ -10,20 +10,38 @@ import Foundation
 
 public struct MountainModifier {
     
-    public var value: CGFloat
-    public var relation: MountainRelation
-    public var multiplier: CGFloat
+    var value: CGFloat
+    var relation: MountainRelation
+    var multiplier: CGFloat
     
-    init(value: CGFloat) {
-        self.value = value
-        self.relation = .EqualTo
-        self.multiplier = 1.0
+    init(value: CGFloat? = nil, relation: MountainRelation? = nil, multiplier: CGFloat? = nil) {
+        
+        if let v = value {
+            self.value = v
+        } else {
+            self.value = 0.0
+        }
+        
+        if let r = relation {
+            self.relation = r
+        } else {
+            self.relation = .EqualTo
+        }
+        
+        if let m = multiplier {
+            self.multiplier = m
+        } else {
+            self.multiplier = 1.0
+        }
+        
     }
     
-    init(value: CGFloat, _ relation: MountainRelation) {
-        self.value = value
-        self.relation = relation
-        self.multiplier = 1.0
-    }
+}
+
+prefix operator * {}
+
+public prefix func * (rightValue: CGFloat) -> MountainModifier {
+    
+    return MountainModifier(multiplier: rightValue)
     
 }
