@@ -35,11 +35,11 @@ enum MountainRelation {
 prefix operator <= {}
 
 public prefix func <= (rightValue: CGFloat) -> MountainModifier {
-    return MountainModifier(value: rightValue, relation: .LessThanOrEqualTo)
+    return MountainModifier(constant: rightValue, relation: .LessThanOrEqualTo)
 }
 
 prefix operator >= {}
 
 public prefix func >= (rightValue: CGFloat) -> MountainModifier {
-    return MountainModifier(value: rightValue, relation: .GreaterThanOrEqualTo)
+    return MountainModifier(constant: rightValue, relation: .GreaterThanOrEqualTo)
 }

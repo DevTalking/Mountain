@@ -10,16 +10,16 @@ import Foundation
 
 public struct MountainModifier {
     
-    var value: CGFloat
+    var constant: CGFloat
     var relation: MountainRelation
     var multiplier: CGFloat
     
-    init(value: CGFloat? = nil, relation: MountainRelation? = nil, multiplier: CGFloat? = nil) {
+    init(constant: CGFloat? = nil, relation: MountainRelation? = nil, multiplier: CGFloat? = nil) {
         
-        if let v = value {
-            self.value = v
+        if let c = constant {
+            self.constant = c
         } else {
-            self.value = 0.0
+            self.constant = 0.0
         }
         
         if let r = relation {
