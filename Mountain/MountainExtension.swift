@@ -187,6 +187,13 @@ extension UIView {
 
     }
     
+    public func size(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        Size(item: self, constant: constant, multiplier: multiplier).installEquation()
+        return self
+        
+    }
+    
     // MARK: Position
     
     public func centerX() -> Self {
