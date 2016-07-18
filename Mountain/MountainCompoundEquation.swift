@@ -64,9 +64,9 @@ class Size: MountainCompoundEquation {
         
     }
     
-    convenience init(item: UIView, constant: Any, multiplier: MountainModifier) {
+    convenience init(item: UIView, constant: Any, multiplier: MountainModifier, toItem: UIView? = nil) {
         
-        self.init(modifier: MountainModifier(), item: item, toItem: nil)
+        self.init(modifier: MountainModifier(), item: item, toItem: toItem)
         
         self.equations.append(Width(item: item, constant: constant, multiplier: multiplier))
         self.equations.append(Height(item: item, constant: constant, multiplier: multiplier))
@@ -96,6 +96,15 @@ class Center: MountainCompoundEquation {
         
         self.equations.append(CenterX(item: item))
         self.equations.append(CenterY(item: item))
+        
+    }
+    
+    convenience init(item: UIView, constant: Any, multiplier: MountainModifier, toItem: UIView? = nil) {
+        
+        self.init(modifier: MountainModifier(), item: item, toItem: toItem)
+        
+        self.equations.append(CenterX(item: item, constant: constant, multiplier: multiplier, toItem: toItem))
+        self.equations.append(CenterY(item: item, constant: constant, multiplier: multiplier, toItem: toItem))
         
     }
     

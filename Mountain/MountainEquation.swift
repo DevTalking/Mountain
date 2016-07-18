@@ -54,9 +54,9 @@ class MountainEquation {
         
     }
     
-    convenience init(item: UIView, constant: Any, multiplier: MountainModifier) {
+    convenience init(item: UIView, constant: Any, multiplier: MountainModifier, toItem: UIView? = nil) {
         
-        self.init(modifier: constant, item: item)
+        self.init(modifier: constant, item: item, toItem: toItem)
         self.multiplier = multiplier.multiplier
         
     }
@@ -152,6 +152,10 @@ class MountainEquation {
             return .Top
         case is TopMargin:
             return .TopMargin
+        case is Left:
+            return .Left
+        case is Right:
+            return .Right
         default:
             return .NotAnAttribute
         }

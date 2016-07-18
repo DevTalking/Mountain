@@ -23,3 +23,7 @@ class CenterYWithinMargins: MountainPositionEquation { }
 class Top: MountainPositionEquation { }
 
 class TopMargin: MountainPositionEquation { }
+
+class Left: MountainPositionEquation { }
+
+class Right: MountainPositionEquation { }
