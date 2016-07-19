@@ -364,6 +364,111 @@ extension UIView {
         
     }
     
+    public func leftMargin() -> Self {
+        
+        LeftMargin(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func leftMargin(constantOrMultiplier: Any) -> Self {
+        
+        LeftMargin(modifier: constantOrMultiplier, item: self, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func leftMargin(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        LeftMargin(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func right() -> Self {
+        
+        Right(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func right(constantOrMultiplier: Any) -> Self {
+        
+        Right(modifier: constantOrMultiplier, item: self, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func right(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        Right(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func rightMargin() -> Self {
+        
+        RightMargin(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func rightMargin(constantOrMultiplier: Any) -> Self {
+        
+        RightMargin(modifier: constantOrMultiplier, item: self, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func rightMargin(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        RightMargin(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func bottom() -> Self {
+        
+        Bottom(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func bottom(constantOrMultiplier: Any) -> Self {
+        
+        Bottom(modifier: constantOrMultiplier, item: self, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func bottom(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        Bottom(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func bottomMargin() -> Self {
+        
+        BottomMargin(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func bottomMargin(constantOrMultiplier: Any) -> Self {
+        
+        BottomMargin(modifier: constantOrMultiplier, item: self, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func bottomMargin(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        BottomMargin(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
 }
 
 

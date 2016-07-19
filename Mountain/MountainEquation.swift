@@ -23,6 +23,7 @@ class MountainEquation {
     var item: AnyObject
     var toItem: AnyObject?
     var toItemAttribute: MountainAttribute?
+    var isExecutedAllLike = false
     
     init(modifier: Any, item: UIView, toItem: AnyObject? = nil) {
         
@@ -104,12 +105,18 @@ class MountainEquation {
         
         (self.item as! UIView).installedEquations.forEach {
             
-            $0.toItem = view
-            if let att = attribute {
-                $0.toItemAttribute = att
-            } else {
-                $0.toItemAttribute = $0.attribute
+            if !$0.isExecutedAllLike {
+                
+                $0.toItem = view
+                if let att = attribute {
+                    $0.toItemAttribute = att
+                } else {
+                    $0.toItemAttribute = $0.attribute
+                }
+                
             }
+                        
+            $0.isExecutedAllLike = true
             
         }
         
@@ -154,8 +161,16 @@ class MountainEquation {
             return .TopMargin
         case is Left:
             return .Left
+        case is LeftMargin:
+            return .LeftMargin
         case is Right:
             return .Right
+        case is RightMargin:
+            return .RightMargin
+        case is Bottom:
+            return .Bottom
+        case is BottomMargin:
+            return .BottomMargin
         default:
             return .NotAnAttribute
         }

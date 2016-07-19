@@ -23,7 +23,11 @@ public enum MountainAttribute {
     case Top
     case TopMargin
     case Left
+    case LeftMargin
     case Right
+    case RightMargin
+    case Bottom
+    case BottomMargin
     
     // MARK: Default attribute
     case NotAnAttribute
@@ -49,8 +53,16 @@ public enum MountainAttribute {
             return .TopMargin
         case .Left:
             return .Left
+        case .LeftMargin:
+            return .LeftMargin
         case .Right:
             return .Right
+        case .RightMargin:
+            return .RightMargin
+        case .Bottom:
+            return .Bottom
+        case .BottomMargin:
+            return .BottomMargin
         case .NotAnAttribute:
             return .NotAnAttribute
         }

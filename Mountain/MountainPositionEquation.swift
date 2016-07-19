@@ -26,4 +26,12 @@ class TopMargin: MountainPositionEquation { }
 
 class Left: MountainPositionEquation { }
 
+class LeftMargin: MountainPositionEquation { }
+
 class Right: MountainPositionEquation { }
+
+class RightMargin: MountainPositionEquation { }
+
+class Bottom: MountainPositionEquation { }
+
+class BottomMargin: MountainPositionEquation { }
