@@ -46,6 +46,10 @@ class MountainEquation {
             self.toItemAttribute = self.attribute
         }
         
+        if self.attribute!.ifShouldInvertConstant {
+            self.constant = self.constant * -1
+        }
+        
     }
     
     convenience init(item: UIView) {
@@ -122,6 +126,12 @@ class MountainEquation {
         
     }
     
+    func to(view: UIView, _ attribute: MountainAttribute? = nil) {
+        
+        self.like(view, attribute)
+        
+    }
+    
     func when(condition: Condition) {
         
         if !condition() {
@@ -171,6 +181,10 @@ class MountainEquation {
             return .Bottom
         case is BottomMargin:
             return .BottomMargin
+        case is Leading:
+            return .Leading
+        case is Trailing:
+            return .Trailing
         default:
             return .NotAnAttribute
         }

@@ -122,6 +122,13 @@ extension UIView {
         
     }
     
+    public func to(view: UIView, _ attribute: MountainAttribute? = nil) -> Self {
+    
+        self.currentEquation!.to(view, attribute)
+        return self
+    
+    }
+    
     // MARK: Dimension
     
     public func width() -> Self {
@@ -465,6 +472,48 @@ extension UIView {
     public func bottomMargin(multiplier: MountainModifier, _ constant: Any) -> Self {
         
         BottomMargin(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func leading() -> Self {
+        
+        Leading(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func leading(constantOrMultiplier: Any) -> Self {
+        
+        Leading(modifier: constantOrMultiplier, item: self, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func leading(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        Leading(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func trailing() -> Self {
+        
+        Trailing(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func trailing(constantOrMultiplier: Any) -> Self {
+        
+        Trailing(modifier: constantOrMultiplier, item: self, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func trailing(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        Trailing(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
         return self
         
     }

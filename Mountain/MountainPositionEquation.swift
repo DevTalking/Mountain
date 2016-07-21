@@ -35,3 +35,7 @@ class RightMargin: MountainPositionEquation { }
 class Bottom: MountainPositionEquation { }
 
 class BottomMargin: MountainPositionEquation { }
+
+class Leading: MountainPositionEquation { }
+
+class Trailing: MountainPositionEquation { }
