@@ -183,8 +183,16 @@ class MountainEquation {
             return .BottomMargin
         case is Leading:
             return .Leading
+        case is LeadingMargin:
+            return .LeadingMargin
         case is Trailing:
             return .Trailing
+        case is TrailingMargin:
+            return .TrailingMargin
+        case is FirstBaseline:
+            return .FirstBaseline
+        case is LastBaseline:
+            return .LastBaseline
         default:
             return .NotAnAttribute
         }

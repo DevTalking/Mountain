@@ -30,7 +30,13 @@ public enum MountainAttribute {
     case BottomMargin
     
     case Leading
+    case LeadingMargin
     case Trailing
+    case TrailingMargin
+    
+    // MARK: Baseline attribute
+    case FirstBaseline
+    case LastBaseline
     
     // MARK: Default attribute
     case NotAnAttribute
@@ -47,16 +53,16 @@ public enum MountainAttribute {
         case .Trailing: return true
         case .CenterX: return false
         case .CenterY: return false
-//        case .FirstBaseline: return false
-//        case .LastBaseline: return true
         case .LeftMargin: return false
         case .RightMargin: return true
         case .TopMargin: return false
         case .BottomMargin: return true
-//        case .LeadingMargin: return false
-//        case .TrailingMargin: return true
+        case .LeadingMargin: return false
+        case .TrailingMargin: return true
         case .CenterXWithinMargins: return false
         case .CenterYWithinMargins: return false
+        case .FirstBaseline: return false
+        case .LastBaseline: return true
         case .NotAnAttribute: return false
         }
     }
@@ -94,8 +100,16 @@ public enum MountainAttribute {
             return .BottomMargin
         case .Leading:
             return .Leading
+        case .LeadingMargin:
+            return .LeadingMargin
         case .Trailing:
             return .Trailing
+        case .TrailingMargin:
+            return .TrailingMargin
+        case .FirstBaseline:
+            return .FirstBaseline
+        case .LastBaseline:
+            return .LastBaseline
         case .NotAnAttribute:
             return .NotAnAttribute
         }

@@ -38,4 +38,12 @@ class BottomMargin: MountainPositionEquation { }
 
 class Leading: MountainPositionEquation { }
 
+class LeadingMargin: MountainPositionEquation { }
+
 class Trailing: MountainPositionEquation { }
+
+class TrailingMargin: MountainPositionEquation { }
+
+class FirstBaseline: MountainPositionEquation { }
+
+class LastBaseline: MountainPositionEquation { }

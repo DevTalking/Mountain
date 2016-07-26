@@ -497,6 +497,27 @@ extension UIView {
         
     }
     
+    public func leadingMargin() -> Self {
+        
+        LeadingMargin(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func leadingMargin(constantOrMultiplier: Any) -> Self {
+        
+        LeadingMargin(modifier: constantOrMultiplier, item: self, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func leadingMargin(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        LeadingMargin(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
     public func trailing() -> Self {
         
         Trailing(item: self).installEquation()
@@ -514,6 +535,69 @@ extension UIView {
     public func trailing(multiplier: MountainModifier, _ constant: Any) -> Self {
         
         Trailing(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func trailingMargin() -> Self {
+        
+        TrailingMargin(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func trailingMargin(constantOrMultiplier: Any) -> Self {
+        
+        TrailingMargin(modifier: constantOrMultiplier, item: self, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func trailingMargin(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        TrailingMargin(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func firstBaseline() -> Self {
+        
+        FirstBaseline(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func firstBaseline(constantOrMultiplier: Any) -> Self {
+        
+        FirstBaseline(modifier: constantOrMultiplier, item: self, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func firstBaseline(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        FirstBaseline(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func lastBaseline() -> Self {
+        
+        LastBaseline(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func lastBaseline(constantOrMultiplier: Any) -> Self {
+        
+        LastBaseline(modifier: constantOrMultiplier, item: self, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func lastBaseline(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        LastBaseline(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
         return self
         
     }
