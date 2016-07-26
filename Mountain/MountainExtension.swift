@@ -602,6 +602,34 @@ extension UIView {
         
     }
     
+    public func edges() -> Self {
+        
+        Edges(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func edges(constantOrMultiplier: Any) -> Self {
+        
+        Edges(constantOrMultiplier: constantOrMultiplier, item: self).installEquation()
+        return self
+        
+    }
+    
+    public func edges(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        Edges(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func edges(top t: Any, bottom b: Any, left l: Any, right r: Any) -> Self {
+        
+        Edges(top: t, bottom: b, left: l, right: r, item: self, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
 }
 
 
