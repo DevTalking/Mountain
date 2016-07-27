@@ -308,6 +308,27 @@ extension UIView {
         
     }
     
+    public func centerXYWithinMargins() -> Self {
+        
+        CenterWithinMargins(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func centerXYWithinMargins(constantOrMultiplier: Any) -> Self {
+        
+        CenterWithinMargins(constantOrMultiplier: constantOrMultiplier, item: self).installEquation()
+        return self
+        
+    }
+    
+    public func centerXYWithinMargins(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        CenterWithinMargins(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
     public func top() -> Self {
         
         Top(item: self).installEquation()
@@ -626,6 +647,34 @@ extension UIView {
     public func edges(top t: Any, bottom b: Any, left l: Any, right r: Any) -> Self {
         
         Edges(top: t, bottom: b, left: l, right: r, item: self, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func margins() -> Self {
+        
+        Margins(item: self).installEquation()
+        return self
+        
+    }
+    
+    public func margins(constantOrMultiplier: Any) -> Self {
+        
+        Margins(constantOrMultiplier: constantOrMultiplier, item: self).installEquation()
+        return self
+        
+    }
+    
+    public func margins(multiplier: MountainModifier, _ constant: Any) -> Self {
+        
+        Margins(item: self, constant: constant, multiplier: multiplier, toItem: self.superview).installEquation()
+        return self
+        
+    }
+    
+    public func margins(top t: Any, bottom b: Any, left l: Any, right r: Any) -> Self {
+        
+        Margins(top: t, bottom: b, left: l, right: r, item: self, toItem: self.superview).installEquation()
         return self
         
     }
