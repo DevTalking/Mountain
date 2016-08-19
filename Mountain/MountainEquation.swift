@@ -79,8 +79,21 @@ class MountainEquation {
     
     func installEquation() {
 
-        (self.item as! UIView).installedEquations.append(self)
-        (self.item as! UIView).currentEquation = self
+        let targetView = self.item as! UIView
+        targetView.installedEquations.append(self)
+        targetView.currentEquation = self
+        
+        let constraintsOnView = MountainTool.gatherConstraintsFromView(targetView)
+        constraintsOnView.forEach {
+            
+            if $0.firstAttribute == self.attribute!.actualAttribute() {
+                
+                targetView.removeConstraint($0)
+                targetView.superview?.removeConstraint($0)
+                
+            }
+
+        }
         
     }
     
@@ -147,6 +160,12 @@ class MountainEquation {
             (self.item as! UIView).installedEquations.removeAll()
             (self.item as! UIView).currentEquation = nil
         }
+        
+    }
+    
+    func with(priority: MountainPriority) {
+        
+        self.priority = priority
         
     }
     

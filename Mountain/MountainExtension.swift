@@ -129,6 +129,13 @@ extension UIView {
     
     }
     
+    public func with(priority: MountainPriority) -> Self {
+        
+        self.currentEquation!.with(priority)
+        return self
+        
+    }
+    
     // MARK: Dimension
     
     public func width() -> Self {

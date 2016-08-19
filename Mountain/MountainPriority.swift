@@ -12,7 +12,7 @@ import Foundation
  Priority enum which offers 3 pre-defined levels of `UILayoutPriority`, and a case which wrapping `Float` associated value to 
  custom priority.
  */
-enum MountainPriority {
+public enum MountainPriority {
     
     case HighPriority
     case MediumPriority

@@ -24,4 +24,14 @@ class MountainTool {
         
     }
     
+    static func gatherConstraintsFromView(view: UIView) -> [NSLayoutConstraint]{
+        
+        var constraintsArray = [NSLayoutConstraint]()
+        let constraintsOnView = view.constraints
+        let constraintsOnSuperview = view.superview!.constraints.filter({ $0.firstItem as? UIView == view })
+        constraintsArray = constraintsOnView + constraintsOnSuperview
+        return constraintsArray
+        
+    }
+    
 }
