@@ -25,7 +25,7 @@ class MountainEquation {
     var toItemAttribute: MountainAttribute?
     var isExecutedAllLike = false
     
-    init(modifier: Any, item: UIView, toItem: AnyObject? = nil) {
+    init(modifier: Any, item: AnyObject, toItem: AnyObject? = nil) {
         
         if modifier is MountainModifier {
             self.relation = (modifier as! MountainModifier).relation
@@ -52,14 +52,14 @@ class MountainEquation {
         
     }
     
-    convenience init(item: UIView) {
+    convenience init(item: AnyObject) {
         
         let modifier = MountainModifier()
         self.init(modifier: modifier, item: item, toItem: item.superview)
         
     }
     
-    convenience init(item: UIView, constant: Any, multiplier: MountainModifier, toItem: UIView? = nil) {
+    convenience init(item: AnyObject, constant: Any, multiplier: MountainModifier, toItem: AnyObject? = nil) {
         
         self.init(modifier: constant, item: item, toItem: toItem)
         self.multiplier = multiplier.multiplier
@@ -115,6 +115,13 @@ class MountainEquation {
             }
             
         }
+        
+    }
+    
+    @available(iOS 9.0, *)
+    func like(layoutGuide: UILayoutGuide) {
+        
+        
         
     }
     
