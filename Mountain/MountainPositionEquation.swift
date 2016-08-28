@@ -10,6 +10,19 @@ import Foundation
 
 class MountainPositionEquation: MountainEquation {
     
+    override init(modifier: Any, item: AnyObject, toItem: AnyObject? = nil) {
+        
+        super.init(modifier: modifier, item: item, toItem: MountainTool.judgeSecondItem(item))
+        
+    }
+    
+    convenience init(item: AnyObject, constant: Any, multiplier: MountainModifier) {
+        
+        self.init(modifier: constant, item: item, toItem: MountainTool.judgeSecondItem(item))
+        self.multiplier = multiplier.multiplier
+        
+    }
+    
 }
 
 class CenterX: MountainPositionEquation { }

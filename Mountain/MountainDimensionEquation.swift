@@ -10,6 +10,19 @@ import Foundation
 
 class MountainDimensionEquation: MountainEquation {
     
+    override init(modifier: Any, item: AnyObject, toItem: AnyObject? = nil) {
+        
+        super.init(modifier: modifier, item: item, toItem: toItem)
+        
+    }
+    
+    convenience init(item: AnyObject, constant: Any, multiplier: MountainModifier) {
+        
+        self.init(modifier: constant, item: item, toItem: nil)
+        self.multiplier = multiplier.multiplier
+        
+    }
+    
 }
 
 class Width: MountainDimensionEquation { }

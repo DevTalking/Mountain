@@ -24,13 +24,54 @@ class MountainTool {
         
     }
     
-    static func gatherConstraintsFromView(view: UIView) -> [NSLayoutConstraint]{
+    static func gatherConstraintsFromItem(item: AnyObject) -> [NSLayoutConstraint]{
         
         var constraintsArray = [NSLayoutConstraint]()
-        let constraintsOnView = view.constraints
-        let constraintsOnSuperview = view.superview!.constraints.filter({ $0.firstItem as? UIView == view })
-        constraintsArray = constraintsOnView + constraintsOnSuperview
+        
+        if let view = item as? UIView {
+
+            let constraintsOnView = view.constraints
+            let constraintsOnSuperview = view.superview!.constraints.filter({ $0.firstItem === view })
+            constraintsArray = constraintsArray + constraintsOnView + constraintsOnSuperview
+            
+        }
+        
+        if #available(iOS 9.0, *) {
+            
+            if let guide = item as? UILayoutGuide {
+                
+                let constraintsOnOwningView = guide.owningView!.constraints.filter({ $0.firstItem === guide })
+                constraintsArray = constraintsArray + constraintsOnOwningView
+                
+            }
+            
+        }
+        
         return constraintsArray
+        
+    }
+    
+    static func judgeSecondItem(item: AnyObject) -> AnyObject? {
+        
+        var secondItem: AnyObject?
+        
+        if let view = item as? UIView {
+            
+            secondItem = view.superview
+            
+        }
+        
+        if #available(iOS 9.0, *) {
+            
+            if let guide = item as? UILayoutGuide {
+                
+                secondItem = guide.owningView
+                
+            }
+            
+        }
+        
+        return secondItem
         
     }
     
