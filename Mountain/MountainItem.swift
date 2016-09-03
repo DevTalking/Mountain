@@ -13,6 +13,8 @@ var currentEquationKey: Int = 1
 
 public protocol MountainItem: NSObjectProtocol {
     
+    var parentView: UIView? { get }
+    
 }
 
 extension MountainItem {
@@ -711,9 +713,45 @@ extension MountainItem {
         
     }
     
+    // MARK: Internal method
+    
+    func removeConstaintsFromParentView() {
+        
+        self.parentView?.constraints.forEach {
+            
+            if $0.firstItem as! UIView === self {
+                
+                self.parentView?.removeConstraint($0)
+                
+            }
+            
+            if #available(iOS 9.0, *) {
+                
+                if $0.firstItem as! UILayoutGuide === self {
+                    
+                    self.parentView?.removeConstraint($0)
+                    
+                }
+                
+            }
+            
+        }
+        
+    }
+    
 }
 
 extension UIView: MountainItem {
+    
+    public var parentView: UIView? {
+        
+        get {
+            
+            return self.superview
+            
+        }
+        
+    }
 
     public func clean() {
         
@@ -735,12 +773,22 @@ extension UIView: MountainItem {
 
 @available(iOS 9.0, *)
 extension UILayoutGuide: MountainItem {
-
+    
+    public var parentView: UIView? {
+        
+        get {
+            
+            return self.owningView
+            
+        }
+        
+    }
+    
     public func clean() {
         
         self.owningView?.constraints.forEach {
             
-            if $0.firstItem as! UIView == self {
+            if $0.firstItem as! UILayoutGuide == self {
                 
                 self.owningView?.removeConstraint($0)
                 
