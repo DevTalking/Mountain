@@ -42,6 +42,7 @@ public enum MountainAttribute {
     case NotAnAttribute
     
     var ifShouldInvertConstant: Bool {
+        
         switch self {
         case .Width: return false
         case .Height: return false
@@ -64,6 +65,7 @@ public enum MountainAttribute {
         case .FirstBaseline: return false
         case .LastBaseline: return true
         case .NotAnAttribute: return false
+            
         }
     }
     

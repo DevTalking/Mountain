@@ -8,9 +8,6 @@
 
 import Foundation
 
-/**
- Relation enum which offers 3 relationships between the first attribute and the modified second attribute in a constraint.
- */
 enum MountainRelation {
     
     case EqualTo

@@ -10,15 +10,15 @@ import Foundation
 
 class MountainPositionEquation: MountainEquation {
     
-    override init(modifier: Any, item: AnyObject, toItem: AnyObject? = nil) {
+    override init(modifier: Any, item: MountainItem, toItem: MountainItem? = nil) {
         
-        super.init(modifier: modifier, item: item, toItem: MountainTool.judgeSecondItem(item))
+        super.init(modifier: modifier, item: item, toItem: item.parentView)
         
     }
     
-    convenience init(item: AnyObject, constant: Any, multiplier: MountainModifier) {
+    convenience init(item: MountainItem, constant: Any, multiplier: MountainModifier) {
         
-        self.init(modifier: constant, item: item, toItem: MountainTool.judgeSecondItem(item))
+        self.init(modifier: constant, item: item, toItem: item.parentView)
         self.multiplier = multiplier.multiplier
         
     }

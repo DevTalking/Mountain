@@ -30,7 +30,7 @@ class MountainCompoundEquation: MountainEquation {
         
     }
     
-    override func like(item: AnyObject, _ attribute: MountainAttribute?) {
+    override func like(item: MountainItem, _ attribute: MountainAttribute?) {
         
         self.equations.forEach({ $0.like(item, attribute) })
         
@@ -44,13 +44,13 @@ class MountainCompoundEquation: MountainEquation {
 
 class Size: MountainCompoundEquation {
     
-    override init(modifier: Any, item: AnyObject, toItem: AnyObject? = nil) {
+    override init(modifier: Any, item: MountainItem, toItem: MountainItem? = nil) {
         
         super.init(modifier: modifier, item: item, toItem: toItem)
         
     }
 
-    convenience init(constantOrMultiplier: Any, item: AnyObject) {
+    convenience init(constantOrMultiplier: Any, item: MountainItem) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: nil)
         
@@ -59,7 +59,7 @@ class Size: MountainCompoundEquation {
         
     }
     
-    convenience init(width w: Any, height h: Any, item: AnyObject) {
+    convenience init(width w: Any, height h: Any, item: MountainItem) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: nil)
         
@@ -68,7 +68,7 @@ class Size: MountainCompoundEquation {
         
     }
     
-    convenience init(item: AnyObject) {
+    convenience init(item: MountainItem) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: nil)
         
@@ -77,7 +77,7 @@ class Size: MountainCompoundEquation {
         
     }
     
-    convenience init(item: AnyObject, constant: Any, multiplier: MountainModifier, toItem: AnyObject? = nil) {
+    convenience init(item: MountainItem, constant: Any, multiplier: MountainModifier, toItem: MountainItem? = nil) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: toItem)
         
@@ -90,13 +90,13 @@ class Size: MountainCompoundEquation {
 
 class Center: MountainCompoundEquation {
     
-    override init(modifier: Any, item: AnyObject, toItem: AnyObject? = nil) {
+    override init(modifier: Any, item: MountainItem, toItem: MountainItem? = nil) {
         
         super.init(modifier: modifier, item: item, toItem: toItem)
         
     }
     
-    convenience init(constantOrMultiplier: Any, item: AnyObject) {
+    convenience init(constantOrMultiplier: Any, item: MountainItem) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: nil)
         
@@ -105,7 +105,7 @@ class Center: MountainCompoundEquation {
         
     }
     
-    convenience init(item: AnyObject) {
+    convenience init(item: MountainItem) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: nil)
         
@@ -114,7 +114,7 @@ class Center: MountainCompoundEquation {
         
     }
     
-    convenience init(item: AnyObject, constant: Any, multiplier: MountainModifier, toItem: AnyObject? = nil) {
+    convenience init(item: MountainItem, constant: Any, multiplier: MountainModifier, toItem: MountainItem? = nil) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: toItem)
         
@@ -127,13 +127,13 @@ class Center: MountainCompoundEquation {
 
 class CenterWithinMargins: MountainCompoundEquation {
     
-    override init(modifier: Any, item: AnyObject, toItem: AnyObject? = nil) {
+    override init(modifier: Any, item: MountainItem, toItem: MountainItem? = nil) {
         
         super.init(modifier: modifier, item: item, toItem: toItem)
         
     }
     
-    convenience init(constantOrMultiplier: Any, item: AnyObject) {
+    convenience init(constantOrMultiplier: Any, item: MountainItem) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: nil)
         
@@ -142,7 +142,7 @@ class CenterWithinMargins: MountainCompoundEquation {
         
     }
     
-    convenience init(item: AnyObject) {
+    convenience init(item: MountainItem) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: nil)
         
@@ -151,7 +151,7 @@ class CenterWithinMargins: MountainCompoundEquation {
         
     }
     
-    convenience init(item: AnyObject, constant: Any, multiplier: MountainModifier, toItem: AnyObject? = nil) {
+    convenience init(item: MountainItem, constant: Any, multiplier: MountainModifier, toItem: MountainItem? = nil) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: toItem)
         
@@ -164,13 +164,13 @@ class CenterWithinMargins: MountainCompoundEquation {
 
 class Edges: MountainCompoundEquation {
     
-    override init(modifier: Any, item: AnyObject, toItem: AnyObject? = nil) {
+    override init(modifier: Any, item: MountainItem, toItem: MountainItem? = nil) {
         
         super.init(modifier: modifier, item: item, toItem: toItem)
         
     }
     
-    convenience init(constantOrMultiplier: Any, item: AnyObject) {
+    convenience init(constantOrMultiplier: Any, item: MountainItem) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: nil)
         
@@ -181,7 +181,7 @@ class Edges: MountainCompoundEquation {
         
     }
     
-    convenience init(item: AnyObject) {
+    convenience init(item: MountainItem) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: nil)
         
@@ -192,7 +192,7 @@ class Edges: MountainCompoundEquation {
         
     }
     
-    convenience init(item: AnyObject, constant: Any, multiplier: MountainModifier, toItem: AnyObject? = nil) {
+    convenience init(item: MountainItem, constant: Any, multiplier: MountainModifier, toItem: MountainItem? = nil) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: toItem)
         
@@ -203,7 +203,7 @@ class Edges: MountainCompoundEquation {
         
     }
     
-    convenience init(top t: Any, bottom b: Any, left l: Any, right r: Any, item: AnyObject, toItem: AnyObject? = nil) {
+    convenience init(top t: Any, bottom b: Any, left l: Any, right r: Any, item: MountainItem, toItem: MountainItem? = nil) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: toItem)
         
@@ -218,13 +218,13 @@ class Edges: MountainCompoundEquation {
 
 class Margins: MountainCompoundEquation {
     
-    override init(modifier: Any, item: AnyObject, toItem: AnyObject? = nil) {
+    override init(modifier: Any, item: MountainItem, toItem: MountainItem? = nil) {
         
         super.init(modifier: modifier, item: item, toItem: toItem)
         
     }
     
-    convenience init(constantOrMultiplier: Any, item: AnyObject) {
+    convenience init(constantOrMultiplier: Any, item: MountainItem) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: nil)
         
@@ -235,7 +235,7 @@ class Margins: MountainCompoundEquation {
         
     }
     
-    convenience init(item: AnyObject) {
+    convenience init(item: MountainItem) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: nil)
         
@@ -246,7 +246,7 @@ class Margins: MountainCompoundEquation {
         
     }
     
-    convenience init(item: AnyObject, constant: Any, multiplier: MountainModifier, toItem: AnyObject? = nil) {
+    convenience init(item: MountainItem, constant: Any, multiplier: MountainModifier, toItem: MountainItem? = nil) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: toItem)
         
@@ -257,7 +257,7 @@ class Margins: MountainCompoundEquation {
         
     }
     
-    convenience init(top t: Any, bottom b: Any, left l: Any, right r: Any, item: AnyObject, toItem: AnyObject? = nil) {
+    convenience init(top t: Any, bottom b: Any, left l: Any, right r: Any, item: MountainItem, toItem: MountainItem? = nil) {
         
         self.init(modifier: MountainModifier(), item: item, toItem: toItem)
         

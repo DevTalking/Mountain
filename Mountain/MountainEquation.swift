@@ -10,9 +10,6 @@ import UIKit
 
 public typealias Condition = () -> Bool
 
-/**
- This is the abstraction of **item1.attribute1 = multiplier × item2.attribute2 + constant** equation.
- */
 class MountainEquation {
     
     var priority: MountainPriority
@@ -20,12 +17,12 @@ class MountainEquation {
     var constant: CGFloat
     var multiplier: CGFloat
     var attribute: MountainAttribute?
-    var item: AnyObject
-    var toItem: AnyObject?
+    var item: MountainItem?
+    var toItem: MountainItem?
     var toItemAttribute: MountainAttribute?
     var isExecutedAllLike = false
     
-    init(modifier: Any, item: AnyObject, toItem: AnyObject? = nil) {
+    init(modifier: Any, item: MountainItem, toItem: MountainItem? = nil) {
         
         if modifier is MountainModifier {
             self.relation = (modifier as! MountainModifier).relation
@@ -52,22 +49,18 @@ class MountainEquation {
         
     }
     
-    convenience init(item: AnyObject) {
+    convenience init(item: MountainItem) {
         
         let modifier = MountainModifier()
-        self.init(modifier: modifier, item: item, toItem: MountainTool.judgeSecondItem(item))
+        self.init(modifier: modifier, item: item, toItem: item.parentView)
         
     }
  
     func generateConstraint() -> NSLayoutConstraint {
+
+        self.item!.autoresizingMaskIntoConstraints = false
         
-        self.isUIView {
-            
-            $0.translatesAutoresizingMaskIntoConstraints = false
-            
-        }
-        
-        let constraint = NSLayoutConstraint(item: self.item, attribute: self.attribute!.actualAttribute(), relatedBy: self.relation.actualRelation(), toItem: self.toItem, attribute: self.toItemAttribute!.actualAttribute(), multiplier: self.multiplier, constant: self.constant)
+        let constraint = NSLayoutConstraint(item: self.item!, attribute: self.attribute!.actualAttribute(), relatedBy: self.relation.actualRelation(), toItem: self.toItem, attribute: self.toItemAttribute!.actualAttribute(), multiplier: self.multiplier, constant: self.constant)
         constraint.priority = self.priority.actualPriority()
         
         return constraint
@@ -76,29 +69,16 @@ class MountainEquation {
     
     func installEquation() {
         
-        self.saveEquationsInArray()
+        self.item!.installedEquations.append(self)
+        self.item!.currentEquation = self
         
-        let constraintsOnView = MountainTool.gatherConstraintsFromItem(self.item)
-        constraintsOnView.forEach { (constraint) in
+        let constraintsOnView = self.gatherConstraintsFromItem(self.item!)
+        constraintsOnView.forEach {
             
-            if constraint.firstAttribute == self.attribute!.actualAttribute() {
+            if $0.firstAttribute == self.attribute!.actualAttribute() {
                 
-                self.isUIView({ (targetView) in
-                    
-                    targetView.removeConstraint(constraint)
-                    targetView.superview?.removeConstraint(constraint)
-                    
-                })
-                
-                if #available(iOS 9.0, *) {
-                    
-                    self.isUILayoutGuide({ (targetGuide) in
-                        
-                        targetGuide.owningView?.removeConstraint(constraint)
-                        
-                    })
-                    
-                }
+                self.item!.parentView!.removeConstraint($0)
+                self.item!.removeConstraint($0)
                 
             }
             
@@ -106,35 +86,13 @@ class MountainEquation {
         
     }
     
-    func like(item: AnyObject, _ attribute: MountainAttribute? = nil) {
+    func like(item: MountainItem, _ attribute: MountainAttribute? = nil) {
         
-        self.isUIView {
+        for e in self.item!.installedEquations.reverse() {
             
-            for e in $0.installedEquations.reverse() {
+            if self.updateEquation(e, toItem: item, attribute: attribute) {
                 
-                if self.updateEquation(e, toItem: item, attribute: attribute) {
-                    
-                    break
-                    
-                }
-                
-            }
-            
-        }
-        
-        if #available(iOS 9.0, *) {
-            
-            self.isUILayoutGuide {
-                
-                for e in $0.installedEquations.reverse() {
-                    
-                    if self.updateEquation(e, toItem: item, attribute: attribute) {
-                        
-                        break
-                        
-                    }
-                    
-                }
+                break
                 
             }
             
@@ -142,35 +100,17 @@ class MountainEquation {
         
     }
     
-    func allLike(item: AnyObject, _ attribute: MountainAttribute? = nil) {
+    func allLike(item: MountainItem, _ attribute: MountainAttribute? = nil) {
         
-        self.isUIView { (view) in
+        self.item!.installedEquations.forEach {
             
-            view.installedEquations.forEach {
-                
-                self.updateEquations($0, toItem: item, attribute: attribute)
-                
-            }
-            
-        }
-        
-        if #available(iOS 9.0, *) {
-            
-            self.isUILayoutGuide { (view) in
-                
-                view.installedEquations.forEach {
-                    
-                    self.updateEquations($0, toItem: item, attribute: attribute)
-                    
-                }
-                
-            }
+            self.updateEquations($0, toItem: item, attribute: attribute)
             
         }
         
     }
     
-    func to(item: AnyObject, _ attribute: MountainAttribute? = nil) {
+    func to(item: MountainItem, _ attribute: MountainAttribute? = nil) {
         
         self.like(item, attribute)
         
@@ -180,23 +120,8 @@ class MountainEquation {
         
         if !condition() {
             
-            self.isUIView {
-                
-                $0.installedEquations.removeEquation(self)
-                $0.currentEquation = nil
-                
-            }
-            
-            if #available(iOS 9.0, *) {
-                
-                self.isUILayoutGuide {
-                    
-                    $0.installedEquations.removeEquation(self)
-                    $0.currentEquation = nil
-                    
-                }
-                
-            }
+            self.item!.installedEquations.removeEquation(self)
+            self.item!.currentEquation = nil
             
         }
         
@@ -206,23 +131,8 @@ class MountainEquation {
         
         if !condition() {
             
-            self.isUIView {
-                
-                $0.installedEquations.removeAll()
-                $0.currentEquation = nil
-                
-            }
-            
-            if #available(iOS 9.0, *) {
-                
-                self.isUILayoutGuide {
-                    
-                    $0.installedEquations.removeAll()
-                    $0.currentEquation = nil
-                    
-                }
-                
-            }
+            self.item!.installedEquations.removeAll()
+            self.item!.currentEquation = nil
 
         }
         
@@ -283,62 +193,13 @@ class MountainEquation {
         
     }
     
-    private func isUIView(code: (UIView) -> Void) {
-        
-        if let targetView = self.item as? UIView {
-        
-            code(targetView)
-            
-        }
-        
-    }
+    // MARK: private methods
     
-    @available(iOS 9.0, *)
-    private func isUILayoutGuide(code: (UILayoutGuide) -> Void) {
-    
-        if let targetGuide = self.item as? UILayoutGuide {
-            
-            code(targetGuide)
-            
-        }
-    
-    }
-    
-    private func saveEquationsInArray() {
-        
-        self.isUIView {
-            
-            $0.installedEquations.append(self)
-            $0.currentEquation = self
-            
-        }
-        
-        if #available(iOS 9.0, *) {
-            
-            self.isUILayoutGuide {
-                
-                $0.installedEquations.append(self)
-                $0.currentEquation = self
-                
-            }
-            
-        }
-        
-    }
-    
-    private func updateEquation(equation: MountainEquation, toItem: AnyObject, attribute: MountainAttribute?) -> Bool {
+    private func updateEquation(equation: MountainEquation, toItem: MountainItem, attribute: MountainAttribute?) -> Bool {
         
         if equation == self {
             
-            if let att = attribute {
-                
-                equation.toItemAttribute = att
-                
-            } else {
-                
-                equation.toItemAttribute = equation.attribute
-                
-            }
+            self.updateAttributeOfEquation(equation, attribute: attribute)
             
             equation.toItem = toItem
             
@@ -350,25 +211,50 @@ class MountainEquation {
         
     }
     
-    private func updateEquations(equation: MountainEquation, toItem: AnyObject, attribute: MountainAttribute?) {
+    private func updateEquations(equation: MountainEquation, toItem: MountainItem, attribute: MountainAttribute?) {
         
         if !equation.isExecutedAllLike {
             
             equation.toItem = toItem
             
-            if let att = attribute {
-                
-                equation.toItemAttribute = att
-                
-            } else {
-                
-                equation.toItemAttribute = equation.attribute
-                
-            }
+            self.updateAttributeOfEquation(equation, attribute: attribute)
             
         }
         
         equation.isExecutedAllLike = true
+        
+    }
+    
+    private func updateAttributeOfEquation(equation: MountainEquation, attribute: MountainAttribute?) {
+        
+        if let att = attribute {
+            
+            equation.toItemAttribute = att
+            
+        } else {
+            
+            equation.toItemAttribute = equation.attribute
+            
+        }
+        
+    }
+    
+    private func gatherConstraintsFromItem(item: MountainItem) -> [NSLayoutConstraint]{
+        
+        var constraintsArray = [NSLayoutConstraint]()
+        
+        let constraintsOnParentView = item.parentView!.constraints.filter({ $0.firstItem === item })
+        
+        constraintsArray = constraintsArray + constraintsOnParentView
+        
+        if let view = item as? UIView {
+            
+            let constraintsOnView = view.constraints
+            constraintsArray = constraintsArray + constraintsOnView
+            
+        }
+        
+        return constraintsArray
         
     }
     

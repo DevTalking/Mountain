@@ -10,13 +10,13 @@ import Foundation
 
 class MountainDimensionEquation: MountainEquation {
     
-    override init(modifier: Any, item: AnyObject, toItem: AnyObject? = nil) {
+    override init(modifier: Any, item: MountainItem, toItem: MountainItem? = nil) {
         
         super.init(modifier: modifier, item: item, toItem: toItem)
         
     }
     
-    convenience init(item: AnyObject, constant: Any, multiplier: MountainModifier) {
+    convenience init(item: MountainItem, constant: Any, multiplier: MountainModifier) {
         
         self.init(modifier: constant, item: item, toItem: nil)
         self.multiplier = multiplier.multiplier

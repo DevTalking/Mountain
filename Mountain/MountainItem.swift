@@ -14,6 +14,7 @@ var currentEquationKey: Int = 1
 public protocol MountainItem: NSObjectProtocol {
     
     var parentView: UIView? { get }
+    var autoresizingMaskIntoConstraints: Bool? { get set }
     
 }
 
@@ -75,14 +76,14 @@ extension MountainItem {
     
     }
     
-    public func like(item: AnyObject, _ attribute: MountainAttribute? = nil) -> Self {
+    public func like(item: MountainItem, _ attribute: MountainAttribute? = nil) -> Self {
     
         self.currentEquation!.like(item, attribute)
         return self
     
     }
     
-    public func allLike(item: AnyObject, _ attribute: MountainAttribute? = nil) -> Self {
+    public func allLike(item: MountainItem, _ attribute: MountainAttribute? = nil) -> Self {
         
         self.currentEquation!.allLike(item, attribute)
         return self
@@ -103,7 +104,7 @@ extension MountainItem {
         
     }
     
-    public func to(item: AnyObject, _ attribute: MountainAttribute? = nil) -> Self {
+    public func to(item: MountainItem, _ attribute: MountainAttribute? = nil) -> Self {
         
         self.currentEquation!.to(item, attribute)
         return self
@@ -114,6 +115,26 @@ extension MountainItem {
         
         self.currentEquation!.with(priority)
         return self
+        
+    }
+    
+    public func clean() {
+        
+        if let view = self as? UIView {
+            
+            view.removeConstraints(view.constraints)
+            
+        }
+        
+        self.parentView?.constraints.forEach {
+                        
+            if $0.firstItem === self {
+                
+                self.parentView?.removeConstraint($0)
+                
+            }
+            
+        }
         
     }
     
@@ -715,25 +736,11 @@ extension MountainItem {
     
     // MARK: Internal method
     
-    func removeConstaintsFromParentView() {
+    func removeConstraint(constraint: NSLayoutConstraint) {
         
-        self.parentView?.constraints.forEach {
+        if let view = self as? UIView {
             
-            if $0.firstItem as! UIView === self {
-                
-                self.parentView?.removeConstraint($0)
-                
-            }
-            
-            if #available(iOS 9.0, *) {
-                
-                if $0.firstItem as! UILayoutGuide === self {
-                    
-                    self.parentView?.removeConstraint($0)
-                    
-                }
-                
-            }
+            view.removeConstraint(constraint)
             
         }
         
@@ -752,18 +759,18 @@ extension UIView: MountainItem {
         }
         
     }
-
-    public func clean() {
+    
+    public var autoresizingMaskIntoConstraints: Bool? {
         
-        self.removeConstraints(self.constraints)
-        
-        self.superview?.constraints.forEach {
+        get {
             
-            if $0.firstItem as! UIView == self {
-                
-                self.superview?.removeConstraint($0)
-                
-            }
+            return self.translatesAutoresizingMaskIntoConstraints
+            
+        }
+        
+        set {
+            
+            self.translatesAutoresizingMaskIntoConstraints = newValue!
             
         }
         
@@ -784,15 +791,17 @@ extension UILayoutGuide: MountainItem {
         
     }
     
-    public func clean() {
+    public var autoresizingMaskIntoConstraints: Bool? {
         
-        self.owningView?.constraints.forEach {
+        get {
             
-            if $0.firstItem as! UILayoutGuide == self {
-                
-                self.owningView?.removeConstraint($0)
-                
-            }
+            return nil
+            
+        }
+        
+        set {
+            
+            
             
         }
         
