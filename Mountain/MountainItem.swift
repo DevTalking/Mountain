@@ -119,22 +119,26 @@ extension MountainItem {
     }
     
     public func clean() {
+
+        self.removeConstraintsOfUIView()
         
-        if let view = self as? UIView {
-            
-            view.removeConstraints(view.constraints)
-            
-        }
+//        if let view = self as? UIView {
+//            
+//            view.removeConstraints(view.constraints)
+//            
+//        }
         
-        self.parentView?.constraints.forEach {
-                        
-            if $0.firstItem === self {
-                
-                self.parentView?.removeConstraint($0)
-                
-            }
-            
-        }
+//        self.parentView?.constraints.forEach {
+//                        
+//            if $0.firstItem === self {
+//                
+//                self.parentView?.removeConstraint($0)
+//                
+//            }
+//            
+//        }
+        
+        NSLayoutConstraint.deactivateConstraints(self.parentView!.constraints.filter({ $0.firstItem === self }))
         
     }
     
@@ -735,12 +739,12 @@ extension MountainItem {
     }
     
     // MARK: Internal method
-    
-    func removeConstraint(constraint: NSLayoutConstraint) {
+
+    func removeConstraintsOfUIView() {
         
         if let view = self as? UIView {
             
-            view.removeConstraint(constraint)
+            NSLayoutConstraint.deactivateConstraints(view.constraints.filter({ $0.firstItem === self }))
             
         }
         

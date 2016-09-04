@@ -73,16 +73,7 @@ class MountainEquation {
         self.item!.currentEquation = self
         
         let constraintsOnView = self.gatherConstraintsFromItem(self.item!)
-        constraintsOnView.forEach {
-            
-            if $0.firstAttribute == self.attribute!.actualAttribute() {
-                
-                self.item!.parentView!.removeConstraint($0)
-                self.item!.removeConstraint($0)
-                
-            }
-            
-        }
+        NSLayoutConstraint.deactivateConstraints(constraintsOnView.filter({ $0.firstAttribute == self.attribute!.actualAttribute() }))
         
     }
     
